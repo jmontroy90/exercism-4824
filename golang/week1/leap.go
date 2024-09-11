@@ -1,4 +1,4 @@
-package day1
+package week1
 
 // So the thing about this problem is that I don't really see how people get to the standard boolean chain method
 // through just parsing a description of leap years. Natural language leads much more to a nested-if branching
