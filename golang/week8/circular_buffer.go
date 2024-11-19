@@ -54,17 +54,10 @@ func (b *Buffer) Overwrite(c byte) {
 		_, _ = b.ReadByte() // throw out the next value
 	}
 	_ = b.WriteByte(c) // this is guaranteed to be in a non-full buffer
-	//if b.size != len(b.buf) { // not full, increment size
-	//	b.size++
-	//}
-	//b.buf[b.writeIx] = c
-	//// TODO: so I guess we iterate both?
-	//b.writeIx = (b.writeIx + 1) % len(b.buf)
-	//b.readIx = b.writeIx
 }
 
 func (b *Buffer) Reset() {
-	b.buf = make([]byte, len(b.buf)) // TODO: "efficiency"?
+	// We don't actually re-allocate memory in circular buffers.
 	b.writeIx = 0
 	b.readIx = 0
 	b.size = 0
