@@ -28,7 +28,10 @@ func (s IntList) Filter(fn func(int) bool) IntList {
 }
 
 func (s IntList) Length() int {
-	return len(s)
+	if len(s) == 0 {
+		return 0
+	}
+	return 1 + s[1:].Length()
 }
 
 func (s IntList) Map(fn func(int) int) IntList {
